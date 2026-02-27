@@ -38,15 +38,15 @@ This project implements several performance-oriented optimizations:
 Putting these all optimizations together the benchmark results for a 2048x2048 grid, temperature 2.269 and number of sweeps equals 100 on a modern CPU are:
 
 | implementation | avg time [s] | std deviation [s] | optimization factor |
-| :--- | :--- | :--- |
-| **Classic** | 14.3851 | 0.4591 | 1.0x |
+| :--- | :--- | :--- | :--- |
+| **Classic** | 14.3851 | 0.4591 | **1.0x** |
 | **Optimized** | 7.3398 | 0.2201 | **~1.96x** |
 
 For the real simulation for a 1024x1024 grid, temperature from 1.0 to 4.0 and number of sweeps equals 500 results are:
 
 | implementation | avg time [s] | optimization factor |
 | :--- | :--- | :--- |
-| **Classic** | 4413.16 | 1.0x |
+| **Classic** | 4413.16 | **1.0x** |
 | **Optimized** | 2381.20 | **~1.85x** |
 
 ### Magnetization vs. Temperature
