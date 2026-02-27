@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("magnetization_data_classic.csv")
+df = pd.read_csv("magnetization_data.csv")
 
 plt.figure(figsize=(12, 7))
 

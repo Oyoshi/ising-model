@@ -30,6 +30,7 @@ This project implements several performance-oriented optimizations:
 2.  **Bitwise Arithmetic**: Boundary conditions are handled using bit-masking (`& mask`) instead of the expensive modulo operator. This optimization requires the grid size ($N$) to be a power of two.
 3.  **Metropolis Lookup Tables**: Boltzmann factors for the energy changes ($\Delta E \in \{4, 8\}$) are precomputed and stored in a lookup table, eliminating redundant calls to the `exp()` function in the simulation hot loop.
 4.  **Inlining**: Critical functions like index calculation are hinted for aggressive inlining to reduce call overhead.
+5. **RNG**: Use Xoshiro as the RNG because it's much faster than standard one and no cryptographic features are required for the MC simulations.
 
 ## Results
 
@@ -44,7 +45,7 @@ Putting these all optimizations together the benchmark results for a 2048x2048 g
 
 For the real simulation for a 1024x1024 grid, temperature from 1.0 to 4.0 and number of sweeps equals 500 results are:
 
-| implementation | avg time [s] | optimization factor |
+| implementation | time [s] | optimization factor |
 | :--- | :--- | :--- |
 | **Classic** | 4413.16 | **1.0x** |
 | **Optimized** | 2381.20 | **~1.85x** |

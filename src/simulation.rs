@@ -3,7 +3,7 @@ use rand::SeedableRng;
 use std::fs::File;
 use std::io::{BufWriter, Write};
 
-use crate::ising::{Ising, IsingClassic, IsingOptimized};
+use crate::ising::{Ising, IsingOptimized};
 use crate::utils::Stats;
 
 pub fn run_simulation() -> std::io::Result<()> {
@@ -13,10 +13,9 @@ pub fn run_simulation() -> std::io::Result<()> {
     let t_max: f64 = 4.0;
     let t_critical: f64 = 2.269;
 
-    //let mut rng = rand::rngs::Xoshiro256PlusPlus::seed_from_u64(0);
-    let mut rng = rand::rng();
+    let mut rng = rand::rngs::Xoshiro256PlusPlus::seed_from_u64(0);
 
-    let file = File::create("magnetization_data_classic.csv")?;
+    let file = File::create("magnetization_data.csv")?;
     let mut writer = BufWriter::new(file);
     writeln!(writer, "temp,mag,std_dev")?;
 
@@ -35,7 +34,7 @@ pub fn run_simulation() -> std::io::Result<()> {
         } else {
             0.1 // big step size far from critical point
         };
-        let mut model = IsingClassic::new(n);
+        let mut model = IsingOptimized::new(n);
 
         let is_near_critical = (t - t_critical).abs() < 0.1;
         let current_measurements = if is_near_critical {

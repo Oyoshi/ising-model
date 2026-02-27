@@ -8,6 +8,6 @@ use crate::benchmark::run_benchmarks;
 
 fn main() {
     env_logger::init();
-    run_benchmarks();
-    //let _ = run_simulation();
+    // run_benchmarks();
+    let _ = run_simulation();
 }
