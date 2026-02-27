@@ -33,13 +33,21 @@ This project implements several performance-oriented optimizations:
 
 ## Results
 
-### Performance Benchmark
-*Note: Results are representative of a 2048x2048 grid on a modern CPU.*
+### Performance Benchmark vs Real Simulation Benchmark
 
-| Implementation | Sweeps/sec | Optimization Factor |
+Putting these all optimizations together the benchmark results for a 2048x2048 grid, temperature 2.269 and number of sweeps equals 100 on a modern CPU are:
+
+| implementation | avg time [s] | std deviation [s] | optimization factor |
 | :--- | :--- | :--- |
-| **Classic** | ~25.4 | 1.0x |
-| **Optimized** | ~142.8 | **~5.6x** |
+| **Classic** | 14.3851 | 0.4591 | 1.0x |
+| **Optimized** | 7.3398 | 0.2201 | **~1.96x** |
+
+For the real simulation for a 1024x1024 grid, temperature from 1.0 to 4.0 and number of sweeps equals 500 results are:
+
+| implementation | avg time [s] | optimization factor |
+| :--- | :--- | :--- |
+| **Classic** | 4413.16 | 1.0x |
+| **Optimized** | 2381.20 | **~1.85x** |
 
 ### Magnetization vs. Temperature
 The simulation clearly shows the phase transition at the critical point. Below $T_c$, the system remains ordered (high magnetization), while above $T_c$, it becomes disordered (near-zero magnetization).
@@ -49,21 +57,3 @@ The simulation clearly shows the phase transition at the critical point. Below $
 
 ![Ising Optimized Magnetization](ising_optimized_plot.png)
 *Figure 2: Magnetization vs. Temperature (Optimized Implementation)*
-
-## Installation & Usage
-
-### Prerequisites
-- [Rust](https://www.rust-lang.org/tools/install) (2024 edition)
-- Python (for plotting)
-
-### Running Simulation
-To run the simulation and generate CSV data:
-```bash
-cargo run --release
-```
-
-### Visualizing Results
-To generate plots from the CSV data:
-```bash
-python plot_mag.py
-```
