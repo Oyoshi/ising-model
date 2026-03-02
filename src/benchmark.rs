@@ -1,5 +1,6 @@
 use log::info;
 use rand::SeedableRng;
+use std::time::Instant;
 
 use crate::ising::{Ising, IsingClassic, IsingOptimized};
 use crate::utils::Stats;
@@ -14,7 +15,7 @@ fn benchmark(
     let mut times = Vec::with_capacity(runs);
 
     for _ in 0..runs {
-        let start = std::time::Instant::now();
+        let start = Instant::now();
         for _ in 0..sweeps_per_run {
             model.run_sweep(rng, temp);
         }

@@ -7,7 +7,6 @@ A high-performance Rust implementation of the 2D Ising model using the Metropoli
 - [Key Features](#key-features)
 - [Optimizations](#optimizations)
 - [Results](#results)
-- [Installation & Usage](#installation--usage)
 
 ## Overview
 

@@ -43,5 +43,5 @@ plt.ylabel("<M>", fontsize=12, rotation=0, labelpad=20)
 plt.grid(True, which="both", linestyle="--", alpha=0.5)
 plt.legend()
 
-plt.savefig("ising_classic_plot.png", dpi=300)
+plt.savefig("ising_plot.png", dpi=300)
 plt.show()
